@@ -810,6 +810,18 @@
             , <&macro_tap     &kp KP_PLUS &kp KP_N0 &kp KP_N0 &kp B &kp B>
             , <&macro_release &kp LALT>;
         };
+        //Hiragana Characters
+        hg_a: hg_a {
+        label = "HIRAGANA_A";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press   &kp LALT>
+            , <&macro_tap     &kp KP_PLUS &kp KP_N3 &kp KP_N0 &kp KP_N4 &kp KP_N2>
+            , <&macro_release &kp LALT>;
+        }; 
     };
 };
 //Combos, note that key listing is zero indexed
@@ -1163,14 +1175,14 @@
             label = "TAP_LEFT_LAYER_LAYER_3";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 1>, <&sl 3>;
+            bindings = <&mo 1>, <&sl 3>, <&tog 4>;
         };
         td_rl_l3: td_rl_l3 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_RIGHT_LAYER_LAYER_3";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 2>, <&sl 3>;
+            bindings = <&mo 2>, <&sl 3>, <&tog 4>;
         };
         td_sp_a: td_sp_a {
             compatible = "zmk,behavior-tap-dance";
@@ -1312,6 +1324,24 @@
 &trans    &inv_exc   &degree    &lb_euro   &us_cent  &plus_min                        &trans    &trans    &trans    &trans      &trans    &trans
 &trans    &trans     &trans     &td_sp_e   &trans    &trans                           &trans    &td_sp_u  &fada_i   &td_sp_o    &trans    &trans
 &trans    &td_sp_a   &td_sp_s   &trans     &trans    &trans                           &trans    &trans    &trans    &dark_l     &trans    &trans
+&trans    &td_sp_z   &trans     &acute_c   &trans    &trans    &trans         &trans  &td_sp_n  &trans    &trans    &trans      &inv_ques &trans
+                     &trans     &trans     &trans    &trans    &trans         &trans  &trans    &trans    &trans    &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+        nihongo_layer {
+// TODO: Some binds are waiting for shifted keycode support.
+// ------------------------------------------------------------------------------------------------------------
+// |       |  ¡  |  °  |  £   |  ¢   |   ±  |                   |      |       |       |      |       |       |
+// |       |     |     |  é   |      |      |                   |      |   ú   |   í   |   ó  |       |       |
+// |       |  á  |  ś  |      |      |      |                   |      |       |       |   ł  |       |       |
+// |       |  ź  |     |  ć   |      |      |        |  |       |  ń   |       |       |      |   ¿   |       |
+//               |     |      |      |      |        |  |       |      |       |       |      |
+            bindings = <
+&trans    &inv_exc   &degree    &lb_euro   &us_cent  &plus_min                        &trans    &trans    &trans    &trans      &trans    &trans
+&trans    &trans     &trans     &td_sp_e   &trans    &trans                           &trans    &td_sp_u  &fada_i   &td_sp_o    &trans    &trans
+&trans    &hg_a   &td_sp_s   &trans     &trans    &trans                           &trans    &trans    &trans    &dark_l     &trans    &trans
 &trans    &td_sp_z   &trans     &acute_c   &trans    &trans    &trans         &trans  &td_sp_n  &trans    &trans    &trans      &inv_ques &trans
                      &trans     &trans     &trans    &trans    &trans         &trans  &trans    &trans    &trans    &trans
             >;
