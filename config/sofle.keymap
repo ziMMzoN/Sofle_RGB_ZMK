@@ -1298,7 +1298,7 @@
                     &trans    &trans      &trans    &mo 3     &pscode           &trans  &trans    &trans    &trans    &trans
             >;
 
-            sensor-bindings = <&rgb_encoder &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&rgb_encoder &inc_dec_kp C_BRI_INC C_BRI_DEC>;
         };
         gaeilge_layer {
 // TODO: Some binds are waiting for shifted keycode support.
